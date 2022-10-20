@@ -1,3 +1,4 @@
 const mix = require('laravel-mix');
 mix
-    .setPublicPath('dist');
+    .sass('assets/scss/styles.scss', '.')
+    .setPublicPath('public/dist');
