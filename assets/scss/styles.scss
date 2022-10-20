@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import "../../node_modules/bootstrap/scss/functions";
+
+$font-family-base: Inter, sans-serif;
+
+$btn-font-weight: 500;
+$btn-font-size: .875rem;
+
+$input-font-size: .875rem;
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
