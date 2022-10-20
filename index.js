@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+const { usersRouter } = require('./endpoints/users');
 const app = express();
 const port = 3000;
 
@@ -9,6 +10,9 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
+
+
+app.use('/admin/users', usersRouter);
 
 app.get('/', (req, res) => {
     res.render('home');
