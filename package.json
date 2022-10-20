@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "watch": "nodemon index.js"
+    "build": "mix",
+    "watch-server": "nodemon index.js",
+    "watch-assets": "mix watch",
+    "watch": "concurrently \"npm:watch-server\" \"npm:watch-assets\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,8 @@
     "mongoose": "^6.6.4"
   },
   "devDependencies": {
+    "concurrently": "^7.4.0",
+    "laravel-mix": "^6.0.49",
     "nodemon": "^2.0.20"
   }
 }
