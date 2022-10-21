@@ -47,6 +47,18 @@ usersRouter.post('/:id/edit', async (req, res) => {
     res.redirect('/admin/users/' + user._id);
 });
 
+usersRouter.post('/:id/delete', async (req, res) => {
+    const user = await User.findById(req.params.id);
+    
+    if (!user) {
+        // TODO: handle 404
+    }
+
+    await user.delete();
+
+    res.redirect('/admin/users');
+});
+
 usersRouter.get('/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
     
