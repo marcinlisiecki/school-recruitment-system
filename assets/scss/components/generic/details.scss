@@ -1,0 +1,30 @@
+.details {
+    border: $border-width $border-style $border-color;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    > *:not(:last-child) {
+        border-bottom: $border-width $border-style $border-color;
+    }
+}
+
+.detail {
+    display: flex;
+    align-items: stretch;
+    font-size: 0.875rem;
+
+    &-label {
+        width: 16rem;
+        background-color: $light;
+        color: $dark;
+        padding: 1rem;
+        font-weight: 500;
+    }
+
+    &-content {
+        flex: 1;
+        padding: 1rem;
+        background-color: $white;
+        color: $dark;
+    }
+}

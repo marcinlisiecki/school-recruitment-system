@@ -7,4 +7,14 @@ usersRouter.get('/', async (req, res) => {
     res.render('admin/users/index', { users });
 });
 
+usersRouter.get('/:id', async (req, res) => {
+    const user = await User.findById(req.params.id);
+    
+    if (!user) {
+        // TODO: handle 404
+    }
+
+    res.render('admin/users/view', { user });
+});
+
 module.exports = { usersRouter };

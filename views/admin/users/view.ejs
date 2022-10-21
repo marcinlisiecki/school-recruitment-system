@@ -1,0 +1,40 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2><%= user.name %></h2>
+
+    <div class="actions">
+        <a href="/admin/users/<%= user._id %>/edit" class="btn btn-primary">Edytuj</a>
+        <form action="/admin/users/<%= user._id %>/delete" method="post" class="inline-form">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+        </form>
+    </div>
+
+    <div class="details">
+        <div class="detail">
+            <div class="detail-label">
+                Adres email
+            </div>
+            <div class="detail-content">
+                <%= user.email %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Data weryfikacji
+            </div>
+            <div class="detail-content">
+                <%= user.emailVerificationDate ? moment(user.emailVerificationDate).format('LLL') : 'nie zweryfikowano' %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Rola
+            </div>
+            <div class="detail-content">
+                <pre style="margin-bottom: 0;"><%= user.role %></pre>
+            </div>
+        </div>
+    </div>
+
+</div>
+<%- include('../../_partials/footer') %>
