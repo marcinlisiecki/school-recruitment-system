@@ -1,0 +1,33 @@
+<%- include('../../_partials/header') %>
+<div class="page-container container my-3">
+    <h2>Edytuj użytkownika</h2>
+    <div class="text-muted"><%= user.name %></div>
+
+    <form method="post">
+        
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Imię i nazwisko</label>
+            <input type="text" name="name" class="form-control" id="nameInput" placeholder="John Doe" value="<%= user.name %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Adres email</label>
+            <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com" value="<%= user.email %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="roleInput" class="form-label">Rola</label>
+            <select name="role" class="form-select" id="roleInput">
+                <option value="user" <%= user.role == 'user' ? 'selected' : '' %>>Użytkownik</option>
+                <option value="admin" <%= user.role == 'admin' ? 'selected' : '' %>>Administrator</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+        </div>
+
+    </form>
+
+</div>
+<%- include('../../_partials/footer') %>

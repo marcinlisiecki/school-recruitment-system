@@ -1,0 +1,32 @@
+<%- include('../../_partials/header') %>
+<div class="page-container container my-3">
+    <h2>Utwórz użytkownika</h2>
+
+    <form method="post">
+        
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Imię i nazwisko</label>
+            <input type="text" name="name" class="form-control" id="nameInput" placeholder="John Doe">
+        </div>
+
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Adres email</label>
+            <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com">
+        </div>
+
+        <div class="mb-3">
+            <label for="roleInput" class="form-label">Rola</label>
+            <select name="role" class="form-select" id="roleInput">
+                <option value="user">Użytkownik</option>
+                <option value="admin">Administrator</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+        </div>
+
+    </form>
+
+</div>
+<%- include('../../_partials/footer') %>
