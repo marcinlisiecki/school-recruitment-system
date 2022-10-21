@@ -3,14 +3,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const { usersRouter } = require('./endpoints/users');
+const moment = require('moment');
 const app = express();
 const port = 3000;
+
+require('moment/locale/pl');
+moment.locale('pl');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
 
+app.locals = { moment };
 
 app.use('/admin/users', usersRouter);
 

@@ -11,3 +11,7 @@ $input-font-size: .875rem;
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import './components/generic/actions.scss';
+
+@import './components/features/user-item.scss';

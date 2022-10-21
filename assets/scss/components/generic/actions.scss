@@ -1,0 +1,12 @@
+.actions {
+    display: flex;
+    margin: 1rem 0;
+    border: $border-width $border-style $border-color;
+    background-color: $light;
+    border-radius: $border-radius-lg;
+    padding: 1rem;
+
+    > *:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+}

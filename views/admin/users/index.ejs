@@ -1,0 +1,38 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2>Użytkownicy</h2>
+
+    <div class="actions">
+        <a href="/admin/users/create" class="btn btn-primary">Utwórz</a>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Użytkownik</th>
+                <th>Rola</th>
+                <th>Zweryfikowano</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach((user) => { %>
+                <tr class="user-item">
+                    <td>
+                        <div class="user-item-name">
+                            <a href="/admin/users/<%= user._id %>"><%= user.name %></a>
+                        </div>
+                        <div class="user-item-email"><%= user.email %></div>
+                    </td>
+                    <td>
+                        <pre><%= user.role %></pre>
+                    </td>
+                    <td>
+                        <%= user.emailVerificationDate ? moment(user.emailVerificationDate).format('LLL') : 'nie zweryfikowano' %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</div>
+<%- include('../../_partials/footer') %>

@@ -4,8 +4,7 @@ const usersRouter = express.Router();
 
 usersRouter.get('/', async (req, res) => {
     const users = await User.find({});
-
-    res.send(JSON.stringify(users));
+    res.render('admin/users/index', { users });
 });
 
 module.exports = { usersRouter };

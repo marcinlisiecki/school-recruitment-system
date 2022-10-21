@@ -1,0 +1,15 @@
+.user-item {
+    line-height: 1.35;
+
+    &-content {
+        flex: 1;
+    }
+
+    &-name {
+        font-weight: 500;
+    }
+
+    &-email {
+        color: $text-muted;
+    }
+}
