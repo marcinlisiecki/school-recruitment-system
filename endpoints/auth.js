@@ -3,7 +3,8 @@ const authRouter = express.Router();
 const { User } = require("../models/user.js");
 const { PasswordResetToken } = require("../models/passwordResetToken.js")
 const { v4: uuid } = require('uuid');
-const moment = require("moment")
+const moment = require("moment");
+const { getTransporter } = require("../utils/mailer.js");
 
 authRouter.get("/forgot-password", (req, res) => {
   res.render('auth/forgot-password/index');
@@ -14,7 +15,7 @@ authRouter.post("/forgot-password", async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    return res.render('auth/forgot-password/index', { error: "W łeb się walnij" })
+    return res.render('auth/forgot-password/index', { error: "Nie znaleziono użytkownika o takim adresie email" })
   }
 
   const token = uuid();
@@ -22,7 +23,15 @@ authRouter.post("/forgot-password", async (req, res) => {
 
   await PasswordResetToken.create({
     email, token, expires,
+    isActive: true,
   })
+
+  await getTransporter().sendMail({
+    from: 'banasiowe.trolololo@gmail.com',
+    to: email,
+    subject: "Resetowanie hasła",
+    text: "http://localhost:3000/auth/forgot-password/change/" + token,
+  });
 
   // TODO: deactivate all other user tokens
 
@@ -37,7 +46,7 @@ authRouter.get("/forgot-password/change/:token", async (req, res) => {
     return res.redirect('/auth/forgot-password')
   }
 
-  if (moment(new Date()).add(15, 'minutes').isAfter(moment(token.expires)) || !token.isActive) {
+  if (moment(new Date()).isAfter(moment(token.expires)) || !token.isActive) {
     return res.render('auth/forgot-password/change', { error: "Link do resetowania hasła wygasł" })
   }
 
