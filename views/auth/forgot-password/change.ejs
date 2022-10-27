@@ -1,0 +1,25 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <% if (typeof error !== "undefined" && error) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+    <% } else { %>
+    <h2>Zmiana hasła</h2>
+
+    <form method="post">
+        <div class="mt-3">
+            <label class="form-label" for="newPassword">Nowe hasło</label>
+            <input class="form-control" type="password" id="newPassword" name="newPassword" placeholder="******">
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label" for="confirmNewPassword">Powtórz nowe hasło</label>
+            <input class="form-control" type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="******">
+        </div>
+
+        <button class="btn btn-primary mt-3">Zmień hasło</button>
+    </form>
+    <% } %>
+</div>
+<%- include('../../_partials/footer') %>

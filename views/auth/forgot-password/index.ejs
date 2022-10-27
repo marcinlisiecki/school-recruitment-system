@@ -1,6 +1,18 @@
-<%- include('../_partials/header') %>
+<%- include('../../_partials/header') %>
 <div class="container my-3">
     <h2>Odzyskiwanie hasła</h2>
+
+    <% if (typeof success !== "undefined" && success) { %>
+        <div class="alert alert-success">
+            Pomyślnie wysłano email z linkiem do resetowania hasła.
+        </div>
+    <% } %>
+
+    <% if (typeof error !== "undefined" && error) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+    <% } %>
 
     <form method="post">
         <div>
@@ -12,4 +24,4 @@
         <button class="btn btn-primary">Resetuj hasło</button>
     </form>
 </div>
-<%- include('../_partials/footer') %>
+<%- include('../../_partials/footer') %>
