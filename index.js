@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const { usersRouter } = require('./endpoints/users');
+const { authRouter } = require('./endpoints/auth.js')
 const moment = require('moment');
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ app.use(express.static('public'));
 app.locals = { moment };
 
 app.use('/admin/users', usersRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
     res.render('home');
