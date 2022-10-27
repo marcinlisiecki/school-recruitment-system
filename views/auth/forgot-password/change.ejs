@@ -1,10 +1,17 @@
 <%- include('../../_partials/header') %>
 <div class="container my-3">
+
+
     <% if (typeof error !== "undefined" && error) { %>
         <div class="alert alert-danger">
             <%= error %>
         </div>
+    <% } else if (typeof success !== "undefined" && success) { %>
+        <div class="alert alert-success">
+            Pomyślnie zmieniono hasło
+        </div>
     <% } else { %>
+
     <h2>Zmiana hasła</h2>
 
     <form method="post">
