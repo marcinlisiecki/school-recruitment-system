@@ -3,7 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const { usersRouter } = require('./endpoints/users');
-const { authRouter } = require('./endpoints/auth.js')
+const { authRouter } = require('./endpoints/auth.js');
+const { schoolsRouter } = require('./endpoints/schools');
 const moment = require('moment');
 const app = express();
 const port = 3000;
@@ -20,6 +21,7 @@ app.locals = { moment };
 
 app.use('/admin/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/admin/schools', schoolsRouter);
 
 app.get('/', (req, res) => {
     res.render('home');

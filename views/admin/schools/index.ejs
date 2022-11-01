@@ -1,0 +1,48 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2>Szkoły</h2>
+
+    <div class="actions">
+        <a href="/admin/schools/create" class="btn btn-primary">Utwórz</a>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Szkoła</th>
+                <th>Adres</th>
+                <th>Kontakt</th>
+                <th>Opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% schools.forEach((school) => { %>
+                <tr class="school-item">
+                    <td>
+                        <div class="school-item-name">
+                            <a href="/admin/schools/<%= school._id %>"><%= school.name %></a>
+                        </div>
+                        <div class="school-item-email"><%= school.email %></div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.address %>,&nbsp;<%= school.zipCode %>&nbsp;<%= school.city %></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.phone %></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.description %></div>
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</div>
+<%- include('../../_partials/footer') %>
