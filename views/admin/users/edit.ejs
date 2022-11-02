@@ -3,19 +3,19 @@
     <h2>Edytuj użytkownika</h2>
     <div class="text-muted"><%= user.name %></div>
 
-    <form method="post">
+    <form method="post" class="form-actions"> 
         
-        <div class="mb-3">
+        <div class="form-field">
             <label for="nameInput" class="form-label">Imię i nazwisko</label>
             <input type="text" name="name" class="form-control" id="nameInput" placeholder="John Doe" value="<%= user.name %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="emailInput" class="form-label">Adres email</label>
             <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com" value="<%= user.email %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="roleInput" class="form-label">Rola</label>
             <select name="role" class="form-select" id="roleInput">
                 <option value="user" <%= user.role == 'user' ? 'selected' : '' %>>Użytkownik</option>
@@ -23,7 +23,7 @@
             </select>
         </div>
 
-        <div>
+        <div class="form-actions">
             <button type="submit" class="btn btn-primary">Zapisz</button>
         </div>
 
