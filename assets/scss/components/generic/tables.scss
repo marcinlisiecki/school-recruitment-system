@@ -1,0 +1,25 @@
+.table {
+    border-radius: $border-radius;
+    overflow: hidden;
+    border: $border-width $border-style $table-border-color !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: $box-shadow-sm;
+
+    th {
+        font-weight: 600;
+        font-size: 0.725rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background-color: $gray-100 !important;
+        color: $gray-900 !important;
+    }
+    
+    td {
+        background-color: white !important;
+    }
+
+    & > :last-child > :last-child > * {
+        border-bottom: none !important;
+    }
+}
