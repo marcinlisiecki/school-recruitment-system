@@ -1,0 +1,28 @@
+<%- include('../_partials/header') %>
+<div class="container my-3">
+    <h2>Rejestracja</h2>
+
+    <form method="post" class="form">
+
+        <div class="form-field">
+            <label for="nameInput" class="form-label">Imię i nazwisko</label>
+            <input type="text" name="name" class="form-control" id="nameInput" placeholder="John Doe">
+        </div>
+
+        <div class="form-field">
+            <label for="emailInput" class="form-label">Adres email</label>
+            <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com">
+            <p class="form-text">Będzie potrzebny, by w przyszłości zresetować hasło.</p>
+        </div>
+
+        <div class="form-field">
+            <label for="passwordInput" class="form-label">Hasło</label>
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="***** ***">
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary">Zarejestruj się</button>
+        </div>
+    </form>
+</div>
+<%- include('../_partials/footer') %>

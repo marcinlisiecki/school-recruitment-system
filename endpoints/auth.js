@@ -76,5 +76,22 @@ authRouter.post("/forgot-password/change/:token", async (req, res) => {
   return res.render('auth/forgot-password/change', { success: true })
 })
 
+authRouter.get('/register', (req, res) => {
+  res.render('auth/register');
+});
+
+authRouter.post('/register', async (req, res) => {
+  const {email, name, password} = req.body;
+
+  if (await User.exists({ email })) {
+    // TODO: handle it.
+  }
+
+  const hashedPassword = hashPassword(password);
+  await User.create({ email, name, password: hashedPassword, role: 'user' });
+
+  res.render('auth/success', { message: 'Twoje konto zostało utworzone pomyślnie.' });
+});
+
 module.exports = { authRouter }
 
