@@ -76,19 +76,5 @@ authRouter.post("/forgot-password/change/:token", async (req, res) => {
   return res.render('auth/forgot-password/change', { success: true })
 })
 
-authRouter.get('/register', (req, res) => {
-  res.render('auth/register');
-});
-
-authRouter.post('/register', async (req, res) => {
-  const {email, name, password} = req.body;
-
-  if (await User.exists({$where: {email}})) {
-    // TODO: handle it.
-  }
-
-  await User.create();
-});
-
 module.exports = { authRouter }
 
