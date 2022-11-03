@@ -1,0 +1,35 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2>Ogłoszenia</h2>
+
+    <div class="actions">
+        <a href="/admin/announcements/create" class="btn btn-primary">Utwórz</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Treść</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% announcement.forEach((announcement) => { %>
+            <tr class="announcement-item">
+                <td>
+                    <div class="announcement-item-name">
+                        <a href="/admin/announcements/<%= announcement._id %>"><%= announcement.title %></a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div><%= announcement.content %></div>
+                    </div>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+
+</div>
+<%- include('../../_partials/footer') %>

@@ -1,0 +1,24 @@
+<%- include('../../_partials/header') %>
+<div class="page-container container my-3">
+    <h2>Dodaj ogłoszenie</h2>
+
+    <form method="post" class="form">
+
+        <div class="form-field">
+            <label for="titleInput" class="form-label">Tytuł ogłoszenia</label>
+            <input type="text" name="title" class="form-control" id="titleInput" placeholder="Tytuł ogłoszenia">
+        </div>
+
+        <div class="form-field">
+            <label for="contentInput" class="form-label">Treść ogłoszenia</label>
+            <textarea name="content" class="form-control" id="contentInput" placeholder="Treść ogłoszenia" rows="4" cols="50"></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Dodaj ogłoszenie</button>
+        </div>
+
+    </form>
+
+</div>
+<%- include('../../_partials/footer') %>
