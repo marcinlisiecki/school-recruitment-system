@@ -1,0 +1,36 @@
+$primary: #8e24aa;
+$font-family-base: Inter, sans-serif;
+
+$btn-font-weight: 500;
+$btn-font-size: .875rem;
+
+$input-font-size: .875rem;
+
+$input-btn-focus-blur: 0;
+$input-btn-focus-width: 2px;
+$input-btn-focus-color: rgba($primary, 0.3);
+$input-btn-focus-box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+$input-focus-border-color: $primary;
+
+$input-btn-padding-y-sm: .25rem;
+$input-btn-padding-x-sm: .5rem;
+
+$input-btn-padding-y: .5rem;
+$input-btn-padding-x: .875rem;
+
+$input-btn-padding-y-lg: .5rem;
+$input-btn-padding-x-lg: 1rem;
+
+$border-radius: .6rem;
+$border-radius-sm: .4rem;
+$border-radius-lg: .8rem;
+$border-radius-xl: 1rem;
+$border-radius-2xl: 2rem;
+$border-radius-pill: 50rem;
+
+$table-cell-padding-x: 1rem;
+$table-cell-padding-y: 0.75rem;
+
+$navbar-padding-x: 1rem;
+$navbar-padding-y: 0.75rem;
+$navbar-brand-font-size: 1.25rem;

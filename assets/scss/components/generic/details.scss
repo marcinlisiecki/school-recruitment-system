@@ -2,6 +2,7 @@
     border: $border-width $border-style $border-color;
     border-radius: $border-radius-lg;
     overflow: hidden;
+    box-shadow: $box-shadow-sm;
 
     > *:not(:last-child) {
         border-bottom: $border-width $border-style $border-color;

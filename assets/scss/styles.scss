@@ -2,18 +2,18 @@
 
 @import "../../node_modules/bootstrap/scss/functions";
 
-$font-family-base: Inter, sans-serif;
-
-$btn-font-weight: 500;
-$btn-font-size: .875rem;
-
-$input-font-size: .875rem;
+@import "variables";
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import './components/generic/actions.scss';
 @import './components/generic/details.scss';
+@import './components/generic/forms.scss';
+@import './components/generic/navbar.scss';
+@import './components/generic/page-container.scss';
+@import './components/generic/tables.scss';
+@import './components/generic/typography.scss';
 
 @import './components/features/user-item.scss';
 @import './components/features/school-item.scss';

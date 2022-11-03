@@ -3,44 +3,44 @@
     <h2>Edytuj szkołe</h2>
     <div class="text-muted"><%= school.name %></div>
 
-    <form method="post">
+    <form method="post" class="form">
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="nameInput" class="form-label">Nazwa szkoły</label>
             <input type="text" name="name" class="form-control" id="nameInput" placeholder="Szkoła podstawowa nr. 54" value="<%= school.name %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="addressInput" class="form-label">Ulica i numer</label>
             <input type="text" name="address" class="form-control" id="addressInput" placeholder="Mazowiecka 13" value="<%= school.address %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="cityInput" class="form-label">Miasto</label>
             <input type="text" name="city" class="form-control" id="cityInput" placeholder="Szczecin" value="<%= school.city %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="zipCodeInput" class="form-label">Kod pocztowy</label>
             <input type="text" name="zipCode" class="form-control" id="zipCodeInput" placeholder="70-526" value="<%= school.zipCode %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="emailInput" class="form-label">Adres email</label>
             <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com" value="<%= school.email %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="phoneInput" class="form-label">Numer telefonu</label>
             <input type="text" name="phone" class="form-control" id="phoneInput" placeholder="123456789" value="<%= school.phone %>">
         </div>
 
-        <div class="mb-3">
+        <div class="form-field">
             <label for="descriptionInput" class="form-label">Opis</label>
             <input type="textarea" name="description" class="form-control" id="descriptionInput" placeholder="Twój opis" value="<%= school.description %>">
         </div>
 
-        <div>
+        <div class="form-actions">
             <button type="submit" class="btn btn-primary">Zapisz</button>
         </div>
 
