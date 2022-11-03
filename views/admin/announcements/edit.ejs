@@ -1,0 +1,25 @@
+<%- include('../../_partials/header') %>
+<div class="page-container container my-3">
+    <h2>Edytuj ogłoszenie</h2>
+    <div class="text-muted"><%= announcement.title %></div>
+
+    <form method="post" class="form">
+
+        <div class="form-field">
+            <label for="titleInput" class="form-label">Tytuł ogłoszenia</label>
+            <input type="text" name="title" class="form-control" id="titleInput" placeholder="Tytuł ogłoszenia" value="<%= announcement.title %>">
+        </div>
+
+        <div class="form-field">
+            <label for="contentInput" class="form-label">Treść ogłoszenia</label>
+            <textarea name="content" class="form-control" id="contentInput" placeholder="Treść ogłoszenia" rows="4" cols="50"><%= announcement.content %></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Edytuj ogłoszenie</button>
+        </div>
+
+    </form>
+
+</div>
+<%- include('../../_partials/footer') %>
