@@ -1,0 +1,31 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2><%= announcement.title %></h2>
+
+    <div class="actions">
+        <a href="/admin/announcements/<%= announcement._id %>/edit" class="btn btn-primary">Edytuj</a>
+        <form action="/admin/announcements/<%= announcement._id %>/delete" method="post" class="inline-form">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+        </form>
+    </div>
+
+    <div class="details">
+        <div class="detail">
+            <div class="detail-label">
+                Tytuł
+            </div>
+            <div class="detail-content">
+                <%= announcement.title %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Treść
+            </div>
+            <div class="detail-content">
+                <%= announcement.content %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../../_partials/footer') %>
