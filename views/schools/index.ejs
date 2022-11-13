@@ -1,0 +1,57 @@
+<%- include('../_partials/header') %>
+<div class="container my-3">
+    <form action="" class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+            <div class="form-field">
+                <input type="text" name="search" class="form-control" id="searchInput" placeholder="Szkoła podstawowa nr. 54">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Szukaj</button>
+            </div> 
+        </div>
+    </form>
+
+    <h2>Szkoły</h2>
+    
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Szkoła</th>
+                <th>Adres</th>
+                <th>Kontakt</th>
+                <th>Opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% schools.forEach((school) => { %>
+                <tr class="school-item">
+                    <td>
+                        <div class="school-item-name">
+                            <a href="/schools/<%= school._id %>"><%= school.name %></a>
+                        </div>
+                        <div class="school-item-email"><%= school.email %></div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.address %>,&nbsp;<%= school.zipCode %>&nbsp;<%= school.city %></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.phone %></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div><%= school.description %></div>
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</div>
+<%- include('../_partials/footer') %>
