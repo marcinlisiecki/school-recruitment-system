@@ -34,6 +34,14 @@
                 <%= schoolProfile.availablePlaces %>
             </div>
         </div>
+        <div class="detail">
+            <div class="detail-label">
+                Szkoła
+            </div>
+            <div class="detail-content">
+                <a href="/admin/schools/<%= school._id %>"><%= school.name %></a>
+            </div>
+        </div>
     </div>
 </div>
 <%- include('../../_partials/footer') %>
