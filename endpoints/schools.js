@@ -69,11 +69,11 @@ schoolsRouter.get('/:id', async (req, res) => {
     res.render('admin/schools/view', { school });
 });
 
-schoolsRouter.get("/:id/profiles/create", async (req, res) => {
-  res.render('admin/profiles/create');
+schoolsRouter.get("/:id/school-profiles/create", async (req, res) => {
+  res.render('admin/school-profiles/create');
 })
 
-schoolsRouter.post("/:id/profiles/create", async (req, res) => {
+schoolsRouter.post("/:id/school-profiles/create", async (req, res) => {
   const schoolId = req.params.id;
   const { name, description, availablePlaces } = req.body;
 

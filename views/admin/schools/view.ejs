@@ -47,13 +47,14 @@
     <h3 class="mt-4">Profile</h3>
 
     <div class="actions">
-        <a href="/admin/schools/<%= school._id %>/profiles/create" class="btn btn-primary">Utwórz</a>
+        <a href="/admin/schools/<%= school._id %>/school-profiles/create" class="btn btn-primary">Utwórz</a>
     </div>
 
     <table class="table">
         <thead>
         <tr>
             <th>Profil</th>
+            <th>Opis</th>
             <th>Liczba dostępnych miejsc</th>
         </tr>
         </thead>
@@ -62,7 +63,12 @@
             <tr>
                 <td>
                     <div>
-                        <a href="/admin/profiles/<%= profile._id %>"><%= profile.name %></a>
+                        <a href="/admin/school-profiles/<%= profile._id %>"><%= profile.name %></a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div><%= profile.description %></div>
                     </div>
                 </td>
                 <td>
