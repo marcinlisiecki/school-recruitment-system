@@ -49,5 +49,30 @@
     <div class="actions">
         <a href="/admin/schools/<%= school._id %>/profiles/create" class="btn btn-primary">Utwórz</a>
     </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Profil</th>
+            <th>Liczba dostępnych miejsc</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% school.profiles.forEach((profile) => { %>
+            <tr>
+                <td>
+                    <div>
+                        <a href="/admin/profiles/<%= profile._id %>"><%= profile.name %></a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div><%= profile.availablePlaces %></div>
+                    </div>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
 </div>
 <%- include('../../_partials/footer') %>

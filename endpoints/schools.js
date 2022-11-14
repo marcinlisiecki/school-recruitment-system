@@ -60,8 +60,8 @@ schoolsRouter.post('/:id/delete', async (req, res) => {
 });
 
 schoolsRouter.get('/:id', async (req, res) => {
-    const school = await School.findById(req.params.id);
-    
+    const school = await School.findById(req.params.id).populate("profiles");
+
     if (!school) {
         // TODO: handle 404
     }
@@ -85,7 +85,7 @@ schoolsRouter.post("/:id/profiles/create", async (req, res) => {
   school.profiles.push(schoolProfile);
   await school.save();
 
-  res.render('admin/schools/view', { school });
+  res.redirect('/admin/schools/' + schoolId)
 })
 
 module.exports = { schoolsRouter };
