@@ -1,0 +1,39 @@
+<%- include('../../_partials/header') %>
+<div class="container my-3">
+    <h2><%= schoolProfile.name %></h2>
+
+    <div class="actions">
+        <a href="/admin/school-profiles/<%= schoolProfile._id %>/edit" class="btn btn-primary">Edytuj</a>
+        <form action="/admin/school-profiles/<%= schoolProfile._id %>/delete" method="post" class="inline-form">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+        </form>
+    </div>
+
+    <div class="details">
+        <div class="detail">
+            <div class="detail-label">
+                Nazwa
+            </div>
+            <div class="detail-content">
+                <%= schoolProfile.name %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Opis
+            </div>
+            <div class="detail-content">
+                <%= schoolProfile.description %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Liczba dostępnych miejsc
+            </div>
+            <div class="detail-content">
+                <%= schoolProfile.availablePlaces %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../../_partials/footer') %>
