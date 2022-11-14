@@ -68,4 +68,8 @@ schoolsRouter.get('/:id', async (req, res) => {
     res.render('admin/schools/view', { school });
 });
 
+schoolsRouter.get("/:id/profiles/create", async (req, res) => {
+  res.render('admin/profiles/create');
+})
+
 module.exports = { schoolsRouter };
