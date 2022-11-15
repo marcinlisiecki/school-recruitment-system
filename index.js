@@ -9,6 +9,8 @@ const { authRouter } = require('./endpoints/auth.js');
 const { schoolsRouter } = require('./endpoints/schools');
 const { announcementsRouter } = require('./endpoints/announcements');
 const { passportUserMiddleware } = require("./middlewares/passportUserMiddleware");
+const { schoolProfilesRouter } = require("./endpoints/schoolProfiles.js");
+const { publicAnnouncementsRouter } = require('./endpoints/publicAnnouncements');
 const moment = require('moment');
 const app = express();
 const port = 3000;
@@ -32,6 +34,8 @@ app.use('/admin/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/admin/schools', schoolsRouter);
 app.use('/admin/announcements', announcementsRouter);
+app.use('/admin/school-profiles', schoolProfilesRouter);
+app.use('/announcements', publicAnnouncementsRouter);
 
 app.get('/', (req, res) => {
     res.render('home');

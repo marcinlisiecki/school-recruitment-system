@@ -1,5 +1,6 @@
 const express = require('express');
 const { School } = require('../models/school');
+const { SchoolProfile } = require("../models/schoolProfile.js")
 const schoolsRouter = express.Router();
 
 schoolsRouter.get('/', async (req, res) => {
@@ -59,13 +60,32 @@ schoolsRouter.post('/:id/delete', async (req, res) => {
 });
 
 schoolsRouter.get('/:id', async (req, res) => {
-    const school = await School.findById(req.params.id);
-    
+    const school = await School.findById(req.params.id).populate("profiles");
+
     if (!school) {
         // TODO: handle 404
     }
 
     res.render('admin/schools/view', { school });
 });
+
+schoolsRouter.get("/:id/school-profiles/create", async (req, res) => {
+  res.render('admin/school-profiles/create');
+})
+
+schoolsRouter.post("/:id/school-profiles/create", async (req, res) => {
+  const schoolId = req.params.id;
+  const { name, description, availablePlaces } = req.body;
+
+  const schoolProfile = await SchoolProfile.create({
+    name, description, availablePlaces
+  });
+
+  const school = await School.findById(schoolId);
+  school.profiles.push(schoolProfile);
+  await school.save();
+
+  res.redirect('/admin/schools/' + schoolId)
+})
 
 module.exports = { schoolsRouter };
