@@ -1,0 +1,24 @@
+<%- include('../_partials/header') %>
+<div class="container my-3">
+    <h2><%= announcement.title %></h2>
+
+    <div class="details">
+        <div class="detail">
+            <div class="detail-label">
+                Tytuł
+            </div>
+            <div class="detail-content">
+                <%= announcement.title %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Treść
+            </div>
+            <div class="detail-content">
+                <%= announcement.content %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../_partials/footer') %>
