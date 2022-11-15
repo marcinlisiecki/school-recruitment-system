@@ -11,7 +11,6 @@ const { announcementsRouter } = require('./endpoints/announcements');
 const { passportUserMiddleware } = require("./middlewares/passportUserMiddleware");
 const { schoolProfilesRouter } = require("./endpoints/schoolProfiles.js");
 const { publicAnnouncementsRouter } = require('./endpoints/publicAnnouncements');
-const { publicSchoolsRouter } = require('./endpoints/publicSchools');
 const moment = require('moment');
 const app = express();
 const port = 3000;
@@ -23,6 +22,11 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+}));
+app.use(passportUserMiddleware);
+configurePassport();
 
 app.locals = { moment };
 
@@ -30,6 +34,8 @@ app.use('/admin/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/admin/schools', schoolsRouter);
 app.use('/admin/announcements', announcementsRouter);
+app.use('/admin/school-profiles', schoolProfilesRouter);
+app.use('/announcements', publicAnnouncementsRouter);
 
 app.get('/', (req, res) => {
     res.render('home');
