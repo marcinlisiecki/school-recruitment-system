@@ -1,0 +1,40 @@
+<%- include('../_partials/header') %>
+<div class="container my-3">
+    <h2><%= school.name %></h2>
+
+    <div class="details">
+        <div class="detail">
+            <div class="detail-label">
+                Adres
+            </div>
+            <div class="detail-content">
+                <%= school.address %>,&nbsp;<%= school.zipCode %>&nbsp;<%= school.city %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Adres email
+            </div>
+            <div class="detail-content">
+                <%= school.email %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Numer telefonu
+            </div>
+            <div class="detail-content">
+                <%= school.phone %>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">
+                Opis
+            </div>
+            <div class="detail-content">
+                <%= school.description %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../_partials/footer') %>
