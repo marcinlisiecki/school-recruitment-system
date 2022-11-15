@@ -99,9 +99,6 @@ authRouter.get('/login', async (req, res) => {
   res.render('auth/login');
 });
 
-
-console.log(passport.strategies);
-
 authRouter.post('/login', passport.authenticate(AUTH_LOCAL, {
   successRedirect: '/',
   failureRedirect: '/auth/login',
