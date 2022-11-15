@@ -7,6 +7,8 @@ const { v4: uuid } = require('uuid');
 const moment = require("moment");
 const { getTransporter } = require("../utils/mailer.js");
 const { hashPassword } = require("../utils/password.js");
+const passport = require("passport");
+const {AUTH_LOCAL} = require("../consts/authStrategies");
 
 authRouter.get("/forgot-password", (req, res) => {
   res.render('auth/forgot-password/index');
@@ -92,6 +94,18 @@ authRouter.post('/register', async (req, res) => {
 
   res.render('auth/success', { message: 'Twoje konto zostało utworzone pomyślnie.' });
 });
+
+authRouter.get('/login', async (req, res) => {
+  res.render('auth/login');
+});
+
+
+console.log(passport.strategies);
+
+authRouter.post('/login', passport.authenticate(AUTH_LOCAL, {
+  successRedirect: '/',
+  failureRedirect: '/auth/login',
+}));
 
 module.exports = { authRouter }
 
