@@ -2,10 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+const session = require('express-session');
+const { configurePassport } = require("./config/passport");
 const { usersRouter } = require('./endpoints/users');
 const { authRouter } = require('./endpoints/auth.js');
 const { schoolsRouter } = require('./endpoints/schools');
 const { announcementsRouter } = require('./endpoints/announcements');
+const { passportUserMiddleware } = require("./middlewares/passportUserMiddleware");
 const { schoolProfilesRouter } = require("./endpoints/schoolProfiles.js");
 const { publicAnnouncementsRouter } = require('./endpoints/publicAnnouncements');
 const moment = require('moment');
@@ -19,6 +22,11 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+}));
+app.use(passportUserMiddleware);
+configurePassport();
 
 app.locals = { moment };
 

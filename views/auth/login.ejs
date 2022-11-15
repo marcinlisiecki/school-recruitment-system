@@ -1,0 +1,22 @@
+<%- include('../_partials/header') %>
+<div class="container my-3">
+    <h2>Zaloguj się</h2>
+
+    <form method="post" class="form">
+
+        <div class="form-field">
+            <label for="emailInput" class="form-label">Adres email</label>
+            <input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@example.com">
+        </div>
+
+        <div class="form-field">
+            <label for="passwordInput" class="form-label">Hasło</label>
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="***** ***">
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary">Zaloguj się</button>
+        </div>
+    </form>
+</div>
+<%- include('../_partials/footer') %>
