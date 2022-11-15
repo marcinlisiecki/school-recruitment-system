@@ -1,0 +1,29 @@
+<%- include('../../_partials/header') %>
+<div class="page-container container my-3">
+    <h2>Utwórz profil</h2>
+
+    <form method="post" class="form">
+
+        <div class="form-field">
+            <label for="nameInput" class="form-label">Nazwa profilu</label>
+            <input type="text" name="name" class="form-control" id="nameInput" placeholder="1a, maturzysta przerwy nie ma">
+        </div>
+
+        <div class="form-field">
+            <label for="descriptionInput" class="form-label">Opis</label>
+            <input type="text" name="description" class="form-control" id="descriptionInput" placeholder="Lekcja, temat">
+        </div>
+
+        <div class="form-field">
+            <label for="availablePlacesInput" class="form-label">Liczba dostępnych miejsc</label>
+            <input type="number" name="availablePlaces" class="form-control" id="availablePlacesInput" placeholder="28">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+        </div>
+
+    </form>
+
+</div>
+<%- include('../../_partials/footer') %>

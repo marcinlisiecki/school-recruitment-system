@@ -7,6 +7,10 @@ const School = mongoose.model('School', {
     description: String,
     email: String,
     phone: String,
+    profiles: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'SchoolProfile'
+    }]
 });
 
 module.exports = {School};
