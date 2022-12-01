@@ -15,11 +15,11 @@
             <% } %>
         </ul>
         <% if (user) { %>
-            <div class="text-light">
+            <div class="text-light small">
                 Siemka, <%= user.name %>!
 
-                <form action="/auth/logout" method="post" class="inline-form d-inline-block" style="margin-left: 1rem;">
-                    <button type="submit" class="btn btn-danger">Wyloguj</button>
+                <form action="/auth/logout" method="post" class="inline-form d-inline-block" style="margin-left: 0.5rem;">
+                    <button type="submit" class="btn btn-outline-light btn-sm">Wyloguj</button>
                 </form>
             </div>
         <% } else { %>

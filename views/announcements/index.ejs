@@ -1,31 +1,18 @@
 <%- include('../_partials/header') %>
 <div class="container my-3">
-    <h2>Ogłoszenia</h2>
+    <h2 class="mb-3">Ogłoszenia</h2>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Tytuł</th>
-            <th>Treść</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% announcement.forEach((announcement) => { %>
-            <tr class="announcement-item">
-                <td>
-                    <div class="announcement-item-name">
-                        <a href="/announcements/<%= announcement._id %>"><%= announcement.title %></a>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <div><%= announcement.content %></div>
-                    </div>
-                </td>
-            </tr>
-        <% }); %>
-        </tbody>
-    </table>
+    <% announcement.forEach((announcement) => { %>
+
+        <article class="card shadow-sm mt-3">
+            <div class="card-body p-4">
+                <h3 class="card-title h4"><a href="/announcements/<%= announcement._id %>%>"><%= announcement.title %></a></h3>
+                <h6 class="card-subtitle mb-2 text-muted">Opublikowano kiedyś</h6>
+                <p class="card-text"><%- announcement.content %></p>
+            </div>
+        </article>
+
+    <% }); %>
 
 </div>
 <%- include('../_partials/footer') %>
