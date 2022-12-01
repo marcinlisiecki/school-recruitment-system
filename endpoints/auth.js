@@ -120,5 +120,25 @@ authRouter.post('/login', passport.authenticate(AUTH_LOCAL, {
   failureRedirect: '/auth/login',
 }));
 
+authRouter.get("/verify-email/:token", async (req, res) => {
+  const tokenString = req.params.token;
+
+  const token = await EmailVerificationToken.findOne({ token: tokenString })
+  if (!token) {
+    return res.redirect('/')
+  }
+
+  if (moment(new Date()).isAfter(moment(token.expires)) || !token.isActive) {
+    return res.render('auth/verify-email', { error: "Link do resetowania hasła wygasł" })
+  }
+
+  await User.findOneAndUpdate({ email: token.email }, { emailVerificationDate: new Date() })
+
+  token.isActive = false;
+  await token.save();
+
+  return res.render('auth/verify-email', { success: true })
+})
+
 module.exports = { authRouter }
 
