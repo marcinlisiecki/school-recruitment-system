@@ -9,6 +9,7 @@ const { getTransporter } = require("../utils/mailer.js");
 const { hashPassword } = require("../utils/password.js");
 const passport = require("passport");
 const {AUTH_LOCAL} = require("../consts/authStrategies");
+const {EmailVerificationToken} = require("../models/emailVerificationToken.js");
 
 authRouter.get("/forgot-password", (req, res) => {
   res.render('auth/forgot-password/index');
@@ -92,7 +93,22 @@ authRouter.post('/register', async (req, res) => {
   const hashedPassword = hashPassword(password);
   await User.create({ email, name, password: hashedPassword, role: 'user' });
 
-  res.render('auth/success', { message: 'Twoje konto zostało utworzone pomyślnie.' });
+  const token = uuid();
+  const expires = moment(new Date()).add(24, 'hours').toDate();
+
+  await EmailVerificationToken.create({
+    email, token, expires,
+    isActive: true,
+  })
+
+  await getTransporter().sendMail({
+    from: process.env.MAILER_EMAIL,
+    to: email,
+    subject: "Weryfikacja adresu Email",
+    text: "http://localhost:3000/auth/verify-email/" + token,
+  });
+
+  res.render('auth/success', { message: 'Twoje konto zostało utworzone pomyślnie. Link z weryfikacją adresu Email został wysłany na podany adres.' });
 });
 
 authRouter.get('/login', async (req, res) => {
@@ -103,6 +119,26 @@ authRouter.post('/login', passport.authenticate(AUTH_LOCAL, {
   successRedirect: '/',
   failureRedirect: '/auth/login',
 }));
+
+authRouter.get("/verify-email/:token", async (req, res) => {
+  const tokenString = req.params.token;
+
+  const token = await EmailVerificationToken.findOne({ token: tokenString })
+  if (!token) {
+    return res.redirect('/')
+  }
+
+  if (moment(new Date()).isAfter(moment(token.expires)) || !token.isActive) {
+    return res.render('auth/verify-email', { error: "Link do weryfikacji adresu email wygasł" })
+  }
+
+  await User.findOneAndUpdate({ email: token.email }, { emailVerificationDate: new Date() })
+
+  token.isActive = false;
+  await token.save();
+
+  return res.render('auth/verify-email', { success: true })
+})
 
 module.exports = { authRouter }
 
