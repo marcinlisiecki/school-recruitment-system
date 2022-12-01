@@ -129,7 +129,7 @@ authRouter.get("/verify-email/:token", async (req, res) => {
   }
 
   if (moment(new Date()).isAfter(moment(token.expires)) || !token.isActive) {
-    return res.render('auth/verify-email', { error: "Link do resetowania hasła wygasł" })
+    return res.render('auth/verify-email', { error: "Link do weryfikacji adresu email wygasł" })
   }
 
   await User.findOneAndUpdate({ email: token.email }, { emailVerificationDate: new Date() })
