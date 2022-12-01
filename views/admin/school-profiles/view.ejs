@@ -1,47 +1,83 @@
 <%- include('../../_partials/header') %>
 <div class="container my-3">
-    <h2><%= schoolProfile.name %></h2>
+    <header>
+        <h2><%= schoolProfile.name %></h2>
+    </header>
 
-    <div class="actions">
+    <section class="actions">
         <a href="/admin/school-profiles/<%= schoolProfile._id %>/edit" class="btn btn-primary">Edytuj</a>
         <form action="/admin/school-profiles/<%= schoolProfile._id %>/delete" method="post" class="inline-form">
             <button type="submit" class="btn btn-danger">Usuń</button>
         </form>
-    </div>
+    </section>
 
-    <div class="details">
-        <div class="detail">
-            <div class="detail-label">
-                Nazwa
+    <section class="mt-5">
+
+        <header class="mb-3">
+            <h3>Dane podstawowe</h3>
+        </header>
+
+        <div class="details">
+            <div class="detail">
+                <div class="detail-label">
+                    Nazwa
+                </div>
+                <div class="detail-content">
+                    <%= schoolProfile.name %>
+                </div>
             </div>
-            <div class="detail-content">
-                <%= schoolProfile.name %>
+            <div class="detail">
+                <div class="detail-label">
+                    Opis
+                </div>
+                <div class="detail-content">
+                    <%= schoolProfile.description %>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="detail-label">
+                    Liczba dostępnych miejsc
+                </div>
+                <div class="detail-content">
+                    <%= schoolProfile.availablePlaces %>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="detail-label">
+                    Szkoła
+                </div>
+                <div class="detail-content">
+                    <a href="/admin/schools/<%= school._id %>"><%= school.name %></a>
+                </div>
             </div>
         </div>
-        <div class="detail">
-            <div class="detail-label">
-                Opis
-            </div>
-            <div class="detail-content">
-                <%= schoolProfile.description %>
-            </div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">
-                Liczba dostępnych miejsc
-            </div>
-            <div class="detail-content">
-                <%= schoolProfile.availablePlaces %>
-            </div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">
-                Szkoła
-            </div>
-            <div class="detail-content">
-                <a href="/admin/schools/<%= school._id %>"><%= school.name %></a>
-            </div>
-        </div>
-    </div>
+    </section>
+
+    <section class="mt-5">
+
+        <header class="mb-3">
+            <h3>Kryteria punktacji</h3>
+        </header>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kryterium</th>
+                    <th>Mnożnik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let criteria = schoolProfile.criteria ? schoolProfile.criteria : [] %>
+                <% criteria.forEach((criterion) => {%>
+                    <tr>
+                        <td><%= criterion.name %></td>
+                        <td><%= criterion.multiplier %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </section>
+
 </div>
 <%- include('../../_partials/footer') %>

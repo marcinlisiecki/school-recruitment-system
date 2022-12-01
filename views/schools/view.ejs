@@ -1,6 +1,6 @@
 <%- include('../_partials/header') %>
 <div class="container my-3">
-    <h2><%= school.name %></h2>
+    <h2 class="mb-3"><%= school.name %></h2>
 
     <div class="details">
         <div class="detail">
@@ -36,5 +36,41 @@
             </div>
         </div>
     </div>
+
+    <h3 class="mb-3 mt-5">Profile</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Profil</th>
+            <th>Opis</th>
+            <th>Liczba dostępnych miejsc</th>
+            <th>Kryteria punktacji</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% school.profiles.forEach((profile) => { %>
+            <tr>
+                <td>
+                    <%= profile.name %>
+                </td>
+                <td>
+                    <div>
+                        <div><%= profile.description %></div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div><%= profile.availablePlaces %></div>
+                    </div>
+                </td>
+                <td class="small">
+                    <% let criteria = profile.criteria ? profile.criteria : [] %>
+                    <%= criteria.map(({ name, multiplier }) => `${name} x ${multiplier}`).join(', ') %>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
 </div>
 <%- include('../_partials/footer') %>

@@ -1,25 +1,64 @@
 <%- include('../../_partials/header') %>
 <div class="page-container container my-3">
-    <h2>Utwórz profil</h2>
+    <header class="mb-5">
+        <h2>Utwórz profil</h2>
+    </header>
 
     <form method="post" class="form">
 
-        <div class="form-field">
-            <label for="nameInput" class="form-label">Nazwa profilu</label>
-            <input type="text" name="name" class="form-control" id="nameInput" placeholder="1a, maturzysta przerwy nie ma">
-        </div>
+        <section>
 
-        <div class="form-field">
-            <label for="descriptionInput" class="form-label">Opis</label>
-            <input type="text" name="description" class="form-control" id="descriptionInput" placeholder="Lekcja, temat">
-        </div>
+            <header>
+                <h3>Dane podstawowe</h3>
+            </header>
 
-        <div class="form-field">
-            <label for="availablePlacesInput" class="form-label">Liczba dostępnych miejsc</label>
-            <input type="number" name="availablePlaces" class="form-control" id="availablePlacesInput" placeholder="28">
-        </div>
+            <div class="form-field">
+                <label for="nameInput" class="form-label">Nazwa profilu</label>
+                <input type="text" name="name" class="form-control" id="nameInput" placeholder="1a, maturzysta przerwy nie ma">
+            </div>
 
-        <div class="form-actions">
+            <div class="form-field">
+                <label for="descriptionInput" class="form-label">Opis</label>
+                <input type="text" name="description" class="form-control" id="descriptionInput" placeholder="Lekcja, temat">
+            </div>
+
+            <div class="form-field">
+                <label for="availablePlacesInput" class="form-label">Liczba dostępnych miejsc</label>
+                <input type="number" name="availablePlaces" class="form-control" id="availablePlacesInput" placeholder="28">
+            </div>
+        </section>
+
+        <section class="mt-5" x-data="{ counter: 0, items: [], createNewItem () { this.items.push({ id: this.counter++ }); }, deleteItem(index) { this.items.splice(index, 1); } }" x-init="createNewItem()">
+
+            <header>
+                <h3>Kryteria punktacji</h3>
+            </header>
+
+            <template x-for="(item, index) in items" :key="item.id">
+                <div class="row align-items-end g-2">
+                    <div class="form-field col-8">
+                        <label :for="'criterion' + index + 'NameInput'" class="form-label">Nazwa</label>
+                        <input type="text" :name="'criteria[' + index + '][name]'" class="form-control" :id="'criterion' + index + 'NameInput'" placeholder="Ocena z języka polskiego">
+                    </div>
+                    <div class="form-field col-2">
+                        <label :for="'criterion' + index + 'NameInput'" class="form-label">Mnożnik</label>
+                        <input type="text" :name="'criteria[' + index + '][multiplier]'" class="form-control" :id="'criterion' + index + 'NameInput'" placeholder="2.35">
+                    </div>
+                    <div class="form-field col-2">
+                        <div class="btn btn-outline-danger" @click="deleteItem(index)">Usuń</div>
+                    </div>
+                </div>
+            </template>
+
+            <div class="mt-2">
+                <button type="button" class="btn btn-secondary" @click="createNewItem()">
+                    Dodaj nowe kryterium
+                </button>
+            </div>
+
+        </section>
+
+        <div class="form-actions mt-5">
             <button type="submit" class="btn btn-primary">Zapisz</button>
         </div>
 

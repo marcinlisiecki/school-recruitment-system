@@ -1,28 +1,47 @@
 <%- include('../../_partials/header') %>
 <div class="page-container container my-3">
-    <h2>Edytuj profil</h2>
-    <div class="text-muted"><%= schoolProfile.name %></div>
+    <header class="mb-5">
+        <h2>Edytuj profil</h2>
+        <div class="text-muted"><%= schoolProfile.name %></div>
+    </header>
 
     <form method="post" class="form">
+        <section>
 
-        <div class="form-field">
-            <label for="nameInput" class="form-label">Nazwa</label>
-            <input type="text" name="name" class="form-control" id="nameInput" placeholder="Maturzysta przerwy nie ma" value="<%= schoolProfile.name %>">
-        </div>
+            <header>
+                <h3>Dane podstawowe</h3>
+            </header>
 
-        <div class="form-field">
-            <label for="descriptionInput" class="form-label">Opis</label>
-            <input type="text" name="description" class="form-control" id="descriptionInput" placeholder="Lekcja, temat" value="<%= schoolProfile.description %>">
-        </div>
+            <div class="form-field">
+                <label for="nameInput" class="form-label">Nazwa</label>
+                <input type="text" name="name" class="form-control" id="nameInput" placeholder="Maturzysta przerwy nie ma" value="<%= schoolProfile.name %>">
+            </div>
 
-        <div class="form-field">
-            <label for="availablePlacesInput" class="form-label">Liczba dostępnych miejsc</label>
-            <input type="number" name="availablePlaces" class="form-control" id="availablePlacesInput" placeholder="28" value="<%= schoolProfile.availablePlaces %>">
-        </div>
+            <div class="form-field">
+                <label for="descriptionInput" class="form-label">Opis</label>
+                <input type="text" name="description" class="form-control" id="descriptionInput" placeholder="Lekcja, temat" value="<%= schoolProfile.description %>">
+            </div>
 
-        <div class="form-actions">
+            <div class="form-field">
+                <label for="availablePlacesInput" class="form-label">Liczba dostępnych miejsc</label>
+                <input type="number" name="availablePlaces" class="form-control" id="availablePlacesInput" placeholder="28" value="<%= schoolProfile.availablePlaces %>">
+            </div>
+
+        </section>
+
+        <section class="mt-5" x-data="{ counter: 0, items: [], createNewItem () { this.items.push({ id: this.counter++ }); }, deleteItem(index) { this.items.splice(index, 1); } }" x-init="createNewItem()">
+
+            <header>
+                <h3>Kryteria punktacji</h3>
+            </header>
+
+            <img src="/img/otoz_nie_tym_razem.jpeg" alt="Ups XD" style="width: 12rem; height: auto;">
+
+        </section>
+
+        <section class="form-actions mt-5">
             <button type="submit" class="btn btn-primary">Edytuj profil</button>
-        </div>
+        </section>
 
     </form>
 
