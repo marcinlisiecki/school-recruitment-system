@@ -6,6 +6,10 @@
         <% if (user) { %>
             <div class="text-light">
                 Siemka, <%= user.name %>!
+
+                <form action="/auth/logout" method="post" class="inline-form d-inline-block" style="margin-left: 1rem;">
+                    <button type="submit" class="btn btn-danger">Wyloguj</button>
+                </form>
             </div>
         <% } else { %>
             <div>

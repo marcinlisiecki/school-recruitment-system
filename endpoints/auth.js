@@ -120,6 +120,11 @@ authRouter.post('/login', passport.authenticate(AUTH_LOCAL, {
   failureRedirect: '/auth/login',
 }));
 
+authRouter.post('/logout', (req, res) => {
+  req.session.passport = {};
+  res.redirect('/auth/login');
+});
+
 authRouter.get("/verify-email/:token", async (req, res) => {
   const tokenString = req.params.token;
 
