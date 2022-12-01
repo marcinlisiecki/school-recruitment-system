@@ -12,7 +12,8 @@
 
         <div class="form-field">
             <label for="contentInput" class="form-label">Treść ogłoszenia</label>
-            <textarea name="content" class="form-control" id="contentInput" placeholder="Treść ogłoszenia" rows="4" cols="50"><%= announcement.content %></textarea>
+            <input type="hidden" name="content" id="contentInput" placeholder="Treść ogłoszenia" value="<%= announcement.content %>" />
+            <trix-editor input="contentInput"></trix-editor>
         </div>
 
         <div class="form-actions">

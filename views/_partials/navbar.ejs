@@ -1,14 +1,25 @@
-<nav class="navbar bg-dark navbar-dark">
+<nav class="navbar bg-dark navbar-dark navbar-expand">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             Rekrutacja
         </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/schools">Baza szkół</a>
+            </li>
+            <% if(user && user.role === 'admin') { %>
+                <%- include('nav/admin.ejs') %>
+            <% } %>
+            <% if(user && user.role === 'user') { %>
+                <%- include('nav/user.ejs') %>
+            <% } %>
+        </ul>
         <% if (user) { %>
-            <div class="text-light">
+            <div class="text-light small">
                 Siemka, <%= user.name %>!
 
-                <form action="/auth/logout" method="post" class="inline-form d-inline-block" style="margin-left: 1rem;">
-                    <button type="submit" class="btn btn-danger">Wyloguj</button>
+                <form action="/auth/logout" method="post" class="inline-form d-inline-block" style="margin-left: 0.5rem;">
+                    <button type="submit" class="btn btn-outline-light btn-sm">Wyloguj</button>
                 </form>
             </div>
         <% } else { %>
