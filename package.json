@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/olafsozanski/banasiowe-trolololo#readme",
   "dependencies": {
+    "alpinejs": "^3.10.5",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.2",
     "dotenv": "^16.0.3",

@@ -20,7 +20,7 @@ publicSchoolsRouter.get('/', async (req, res) => {
 });
 
 publicSchoolsRouter.get('/:id', async (req, res) => {
-    const school = await School.findById(req.params.id);
+    const school = await School.findById(req.params.id).populate('profiles');
 
     if (!school) {
         // TODO: handle 404

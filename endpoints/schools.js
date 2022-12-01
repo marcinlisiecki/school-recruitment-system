@@ -75,10 +75,10 @@ schoolsRouter.get("/:id/school-profiles/create", async (req, res) => {
 
 schoolsRouter.post("/:id/school-profiles/create", async (req, res) => {
   const schoolId = req.params.id;
-  const { name, description, availablePlaces } = req.body;
+  const { name, description, availablePlaces, criteria } = req.body;
 
   const schoolProfile = await SchoolProfile.create({
-    name, description, availablePlaces
+    name, description, availablePlaces, criteria
   });
 
   const school = await School.findById(schoolId);
