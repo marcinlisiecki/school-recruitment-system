@@ -1,8 +1,8 @@
 const express = require('express');
 const submitRouter = express.Router();
 
-const { Application } = require("../models/application.js");
-const { ApplicationProfile } = require("../models/applicationProfile.js");
+const { Submission } = require("../models/submission.js");
+const { SubmissionProfile } = require("../models/submissionProfile.js");
 const { SchoolProfile } = require("../models/schoolProfile.js")
 
 submitRouter.get('/', (req, res) => {
@@ -12,7 +12,7 @@ submitRouter.get('/', (req, res) => {
 submitRouter.post('/', async (req, res) => {
   const { name, pesel, address, zipCode, city, profiles } = req.body;
 
-  const application = new Application({
+  const submission = new Submission({
     name, pesel, address, zipCode, city
   })
 
@@ -22,7 +22,7 @@ submitRouter.post('/', async (req, res) => {
       return total + profile.criteriaSubmission[criteria._id] * criteria.multiplier;
     }, 0)
 
-    const applicationProfile = new ApplicationProfile({
+    const submissionProfile = new SubmissionProfile({
       profile: profile._id,
       school: profile.school,
       score,
@@ -32,11 +32,11 @@ submitRouter.post('/', async (req, res) => {
       }))
     })
 
-    await applicationProfile.save();
-    application.profiles.push(applicationProfile);
+    await submissionProfile.save();
+    submission.profiles.push(submissionProfile);
   }
 
-  await application.save();
+  await submission.save();
 
   res.render('submit/form-view', { success: true });
 });
