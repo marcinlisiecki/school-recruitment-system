@@ -13,11 +13,13 @@ const { schoolProfilesRouter } = require("./endpoints/schoolProfiles.js");
 const { publicAnnouncementsRouter } = require('./endpoints/publicAnnouncements');
 const { publicSchoolsRouter } = require("./endpoints/publicSchools");
 const { contactRouter } = require('./endpoints/contact');
+const { submitRouter } = require("./endpoints/submit");
 const moment = require('moment');
 const app = express();
 const port = 3000;
 
 require('moment/locale/pl');
+const { apiSchoolsRouter } = require("./endpoints/apiSchools");
 moment.locale('pl');
 
 app.set('view engine', 'ejs');
@@ -40,6 +42,9 @@ app.use('/admin/school-profiles', schoolProfilesRouter);
 app.use('/announcements', publicAnnouncementsRouter);
 app.use('/schools', publicSchoolsRouter);
 app.use('/contact', contactRouter);
+app.use('/submit', submitRouter);
+
+app.use('/api/schools', apiSchoolsRouter);
 
 app.get('/', (req, res) => {
     res.render('home');

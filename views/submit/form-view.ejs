@@ -1,0 +1,73 @@
+<%- include('../_partials/header') %>
+
+<div class="container my-3">
+    <header class="mb-5">
+        <h2>Złóż wniosek</h2>
+        <p class="text-muted">Wypełnij wszystkie poniższe pola, wybierz szkołę oraz wypełnij informacje odnośnie kryteriów danych placówek.</p>
+    </header>
+
+    <form method="post" class="form mt-4">
+
+        <section class="mb-5">
+            <header class="mb-3">
+                <h3>Dane podstawowe</h3>
+            </header>
+
+            <div class="form-field">
+                <label for="nameInput" class="form-label">Imię i nazwisko</label>
+                <input type="text" name="name" class="form-control" id="nameInput" placeholder="John Doe">
+            </div>
+
+            <div class="form-field">
+                <label for="peselInput" class="form-label">PESEL</label>
+                <input type="text" name="pesel" class="form-control" id="peselInput" placeholder="63082358739">
+            </div>
+
+            <div class="form-field">
+                <label for="addressInput" class="form-label">Adres zamieszkania</label>
+                <input type="text" name="address" class="form-control" id="addressInput" placeholder="Szkolna 1">
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-field">
+                        <label for="postCodeInput" class="form-label">Kod pocztowy</label>
+                        <input type="text" name="zipCode" class="form-control" id="postCodeInput" placeholder="76-212">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-field">
+                        <label for="cityInput" class="form-label">Miejscowość</label>
+                        <input type="text" name="city" class="form-control" id="cityInput" placeholder="Wilkowyje">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-5">
+            <header class="mb-3">
+                <h3>Dane rodzica/opiekuna prawnego</h3>
+            </header>
+
+            <p class="text-muted">Gratulacje! Jesteś pełnoletni i nie musisz wypełniać tej sekcji! Skąd to wiemy? Nie interesuj się...</p>
+        </section>
+
+        <section class="mb-5">
+            <header class="mb-3">
+                <h3>Wybór szkoły</h3>
+                <p class="text-muted">Możesz wybrać maksymalnie 5 profili.</p>
+            </header>
+
+            <div id="schoolSelector"></div>
+
+        </section>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Złóż wniosek</button>
+        </div>
+
+    </form>
+</div>
+
+<%- include('../_partials/footer') %>

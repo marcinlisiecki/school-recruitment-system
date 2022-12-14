@@ -1,5 +1,6 @@
 const express = require('express');
 const { School } = require('../models/school');
+const { findSchoolsByQuery } = require("../utils/schools");
 const publicSchoolsRouter = express.Router();
 
 publicSchoolsRouter.get('/', async (req, res) => {
@@ -8,13 +9,7 @@ publicSchoolsRouter.get('/', async (req, res) => {
     if (!search) {
         schools = await School.find({});
     } else {
-        schools = await School.find({ 
-            $or: [
-                {name: {'$regex': search, '$options': 'i'}}, 
-                {address: {'$regex': search, '$options': 'i'}},
-                {city: {'$regex': search, '$options': 'i'}},
-            ] 
-        });
+        schools = await findSchoolsByQuery(search);
     }
     res.render('schools/index', { schools, search });
 });
