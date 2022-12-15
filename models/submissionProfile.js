@@ -14,6 +14,10 @@ const SubmissionProfile = mongoose.model('SubmissionProfile', {
     value: Number
   }],
   score: Number,
+  submission: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Submission'
+  },
 });
 
 module.exports = { SubmissionProfile };

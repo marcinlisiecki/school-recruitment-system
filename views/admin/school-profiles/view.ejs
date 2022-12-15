@@ -79,5 +79,32 @@
 
     </section>
 
+    <section class="mt-5">
+
+        <header class="mb-3">
+            <h3>Osoby zakwalifikowane</h3>
+        </header>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Imię i nazwisko</th>
+                    <th>PESEL</th>
+                    <th>Punkty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% ranking.forEach((item) => {%>
+                    <tr>
+                        <td><%= item.submission.name %></td>
+                        <td><%= item.submission.pesel %></td>
+                        <td><%= item.score %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </section>
+
 </div>
 <%- include('../../_partials/footer') %>

@@ -29,7 +29,8 @@ submitRouter.post('/', async (req, res) => {
       criteriaSubmission: Object.keys(profile.criteriaSubmission).map(key => ({
         criteriaId: key,
         value: parseFloat(profile.criteriaSubmission[key])
-      }))
+      })),
+      submission
     })
 
     await submissionProfile.save();
